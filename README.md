@@ -8,7 +8,7 @@ Use this code in Morfy Templates to show contact form:
 
 You can ease configure and set your fields for contact form here: `/plugins/contact/contact.yml`  
 
-Create new field
+Create new field (`/plugins/contact/contact.yml`)
 ```
 ...
 fields:
@@ -19,7 +19,7 @@ fields:
 
 ```
 
-Display new field in email template
+Display new field in email template (`/plugins/contact/templates/email.tpl`)
 ```
 Phone: {$fields.phone}
 ```
