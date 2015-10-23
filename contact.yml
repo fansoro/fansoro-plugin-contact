@@ -1,0 +1,28 @@
+name: Contact
+version: 1.0.0
+description: "Contact plugin for Morfy"
+author:
+  name: Sergey Romanenko
+  email: awilum@msn.com
+  url: https://github.com/Awilum
+homepage: https://github.com/morfy-cms/morfy-plugin-contact
+bugs: https://github.com/morfy-cms/morfy-plugin-contact/issues
+license: MIT
+
+# Plugin settings
+enabled: true
+reply_to: demo@demo.org
+subject: 'Subject'
+status_error_msg: 'A Letter was not sent!'
+fields:
+  subject:
+    label: 'Name'
+    type: text
+    required: true
+  email:
+    label: 'Email'
+    type: email
+    required: true
+  message:
+    label: 'Message'
+    type: textarea
