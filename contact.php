@@ -55,7 +55,8 @@ class Contact
             }
         }
 
-        $fenom->display('form.tpl', array('fields' => Morfy::$plugins['contact']['fields'],
+        $fenom->display('form.tpl', array('fields'  => Morfy::$plugins['contact']['fields'],
+                                          'buttons' => Morfy::$plugins['contact']['buttons'],
                                           'status_error' => $status_error));
     }
 }

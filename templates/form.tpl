@@ -7,14 +7,25 @@
         <div class="form-group">
             <label>{$field.label}</label>
             {if $field.type == 'textarea'}
-                <textarea name="{$key}" class="form-control" rows="3"></textarea>
-            {else}
-                <input type="{$field.type}" class="form-control" name="{$key}" value="" {if $field.required}required{/if}>
+                <textarea {include 'attributes/textarea.tpl'}></textarea>
+            {elseif $field.type == 'select'}
+                <select {include 'attributes/select.tpl'}>
+                    <option>{$field.default_option}</option>
+                    {foreach $field.options as $key => $field}
+                        <option value="{$key}">{$field}</option>
+                    {/foreach}
+                </select>
+            {elseif $field.type == 'text' || $field.type == 'email'}
+                <input {include 'attributes/input.tpl'}>
             {/if}
         </div>
     {/foreach}
 
     <div class="form-group">
-        <input type="submit" class="btn btn-primary" value="Send" name="submit"/>
+        {foreach $buttons as $key => $button}
+            {if $button.type == 'submit' || $button.type == 'reset' || $button.type == 'button'}
+                <input {include 'attributes/button.tpl'}>
+            {/if}
+        {/foreach}
     </div>
 </form>

@@ -1,5 +1,5 @@
 name: Contact
-version: 1.0.0
+version: 1.1.0
 description: "Contact plugin for Morfy"
 author:
   name: Sergey Romanenko
@@ -14,15 +14,28 @@ enabled: true
 reply_to: demo@demo.org
 subject: 'Subject'
 status_error_msg: 'A Letter was not sent!'
+buttons:
+  submit:
+    type: submit
+    value: 'Submit'
+    class: 'btn btn-primary'
+  reset:
+    type: reset
+    value: 'Reset'
+    class: 'btn btn-default'
 fields:
   subject:
     label: 'Name'
     type: text
     required: true
+    class: 'form-control'
   email:
     label: 'Email'
     type: email
     required: true
+    class: 'form-control'
   message:
     label: 'Message'
     type: textarea
+    class: 'form-control'
+    rows: 5
