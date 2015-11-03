@@ -25,9 +25,7 @@ class Contact
         $status_error = '';
 
         if (Request::post('submit')) {
-
             if (Token::check(Request::post('csrf'))) {
-
                 $email    = (Request::post('email')) ? Request::post('email') : Morfy::$plugins['contact']['reply_to'] ;
                 $subject  = (Request::post('subject')) ? Request::post('subject') : Morfy::$plugins['contact']['subject'] ;
 
@@ -45,11 +43,14 @@ class Contact
                 $mail->MsgHTML($fenom->fetch('email.tpl', array('fields' => $_POST)));
 
                 if ($mail->Send()) {
-                    Request::redirect(Url::getCurrent());
+                    if (Morfy::$plugins['contact']['result_page']) {
+                        Request::redirect(Morfy::$site['url'] . '/' . Morfy::$plugins['contact']['result_page']);
+                    } else {
+                        Request::redirect(Url::getCurrent());
+                    }
                 } else {
                     $status_error = Morfy::$plugins['contact']['status_error_msg'];
                 }
-
             } else {
                 die('Request was denied because it contained an invalid security token. Please refresh the page and try again.');
             }

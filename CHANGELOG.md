@@ -1,3 +1,6 @@
+# v1.1.1, 2015-11-03
+* Added ability to setup result page
+
 # v1.1.0, 2015-10-25
 * Added ability to setup contact form buttons
 * Added support for select form control

@@ -14,6 +14,7 @@ enabled: true
 reply_to: demo@demo.org
 subject: 'Subject'
 status_error_msg: 'A Letter was not sent!'
+#result_page: thank-you-page
 buttons:
   submit:
     type: submit
