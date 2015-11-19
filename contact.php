@@ -15,19 +15,16 @@ class Contact
 {
     public static function form($recipient = '')
     {
-        $fenom = Fenom::factory(
-            PLUGINS_PATH . '/contact/templates/',
-            CACHE_PATH . '/fenom/',
-            Morfy::$fenom
-        );
+        $template = Template::factory(PLUGINS_PATH . '/contact/templates/');
 
-        empty($recipient) and $recipient = Morfy::$site['author']['email'];
+        empty($recipient) and $recipient = Config::get('site.author.email');
+
         $status_error = '';
 
         if (Request::post('submit')) {
             if (Token::check(Request::post('csrf'))) {
-                $email    = (Request::post('email')) ? Request::post('email') : Morfy::$plugins['contact']['reply_to'] ;
-                $subject  = (Request::post('subject')) ? Request::post('subject') : Morfy::$plugins['contact']['subject'] ;
+                $email    = (Request::post('email')) ? Request::post('email') : Config::get('plugins.contact.reply_to');
+                $subject  = (Request::post('subject')) ? Request::post('subject') : Config::get('plugins.contact.subject');
 
                 $mail = new PHPMailer();
                 $mail->CharSet = 'utf-8';
@@ -40,24 +37,24 @@ class Contact
                 Arr::delete($_POST, 'csrf');
                 Arr::delete($_POST, 'submit');
 
-                $mail->MsgHTML($fenom->fetch('email.tpl', array('fields' => $_POST)));
+                $mail->MsgHTML($template->fetch('email.tpl', array('fields' => $_POST)));
 
                 if ($mail->Send()) {
-                    if (Morfy::$plugins['contact']['result_page']) {
-                        Request::redirect(Morfy::$site['url'] . '/' . Morfy::$plugins['contact']['result_page']);
+                    if (Config::get('plugins.contact.result_page')) {
+                        Request::redirect(Morfy::$site['url'] . '/' . Config::get('plugins.contact.result_page'));
                     } else {
                         Request::redirect(Url::getCurrent());
                     }
                 } else {
-                    $status_error = Morfy::$plugins['contact']['status_error_msg'];
+                    $status_error = Config::get('plugins.contact.status_error_msg');
                 }
             } else {
                 die('Request was denied because it contained an invalid security token. Please refresh the page and try again.');
             }
         }
 
-        $fenom->display('form.tpl', array('fields'  => Morfy::$plugins['contact']['fields'],
-                                          'buttons' => Morfy::$plugins['contact']['buttons'],
-                                          'status_error' => $status_error));
+        $template->display('form.tpl', array('fields'  => Config::get('plugins.contact.fields'),
+                                             'buttons' => Config::get('plugins.contact.buttons'),
+                                             'status_error' => $status_error));
     }
 }
