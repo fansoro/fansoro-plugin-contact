@@ -1,9 +1,9 @@
 <?php
 
 /**
- * Morfy Contact Plugin
+ * Fansoro Contact Plugin
  *
- * (c) Romanenko Sergey / Awilum <http://morfy.org>
+ * (c) Romanenko Sergey / Awilum <http://fansoro.org>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -41,7 +41,7 @@ class Contact
 
                 if ($mail->Send()) {
                     if (Config::get('plugins.contact.result_page')) {
-                        Request::redirect(Morfy::$site['url'] . '/' . Config::get('plugins.contact.result_page'));
+                        Request::redirect(Fansoro::$site['url'] . '/' . Config::get('plugins.contact.result_page'));
                     } else {
                         Request::redirect(Url::getCurrent());
                     }

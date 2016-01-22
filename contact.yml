@@ -1,12 +1,12 @@
 name: Contact
-version: 2.0.0
-description: "Contact plugin for Morfy"
+version: 3.0.0
+description: "Contact plugin for Fansoro"
 author:
   name: Sergey Romanenko
   email: awilum@msn.com
   url: https://github.com/Awilum
-homepage: https://github.com/morfy-cms/morfy-plugin-contact
-bugs: https://github.com/morfy-cms/morfy-plugin-contact/issues
+homepage: https://github.com/fansoro/fansoro-plugin-contact
+bugs: https://github.com/fansoro/fansoro-plugin-contact/issues
 license: MIT
 
 # Plugin settings

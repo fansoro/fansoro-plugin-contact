@@ -1,7 +1,7 @@
-# Morfy Contact Plugin
-Simple contact plugin for Morfy.
+# Fansoro Contact Plugin
+Simple contact plugin for Fansoro.
 
-Use this code in Morfy Templates to show contact form:
+Use this code in Fansoro Templates to show contact form:
 ```smarty
 {Contact::form('admin@site.org')}
 ```
@@ -83,4 +83,4 @@ buttons:
 ```
 
 ## License
-See [LICENSE](https://github.com/morfy-cms/morfy-plugin-contact/blob/master/LICENSE)
+See [LICENSE](https://github.com/fansoro/fansoro-plugin-contact/blob/master/LICENSE)
